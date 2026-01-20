@@ -47,6 +47,7 @@ make test
 ## Requirements
 
 - [Podman](https://podman.io/) (or modify Makefile/cy for Docker)
+- You must build the image locally with `make build` (no pre-built images available)
 
 ## Files
 
