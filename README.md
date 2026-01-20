@@ -46,8 +46,15 @@ make test
 
 ## Requirements
 
-- [Podman](https://podman.io/) (or modify Makefile/cy for Docker)
+- [Podman](https://podman.io/) or [Docker](https://www.docker.com/)
 - You must build the image locally with `make build` (no pre-built images available)
+
+The Makefile auto-detects the container engine (prefers podman, falls back to docker). To override:
+
+```bash
+make ENGINE=docker build
+make ENGINE=podman build
+```
 
 ## Files
 

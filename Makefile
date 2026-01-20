@@ -2,15 +2,19 @@
 
 IMAGE_NAME := claude-yolo
 
+# Auto-detect container engine: prefer podman, fallback to docker
+# Override with: make ENGINE=docker build
+ENGINE := $(shell command -v podman >/dev/null 2>&1 && echo podman || echo docker)
+
 build:
-	podman build -t $(IMAGE_NAME) .
-	@podman images $(IMAGE_NAME) --format "Size: {{.Size}}"
+	$(ENGINE) build -t $(IMAGE_NAME) .
+	@$(ENGINE) images $(IMAGE_NAME) --format "Size: {{.Size}}"
 
 run:
-	podman run -it --rm -v $(PWD):/workspace $(IMAGE_NAME)
+	$(ENGINE) run -it --rm -v $(PWD):/workspace $(IMAGE_NAME)
 
 test:
-	podman run --rm $(IMAGE_NAME) -c test-installs
+	$(ENGINE) run --rm $(IMAGE_NAME) -c test-installs
 
 clean:
-	podman rmi $(IMAGE_NAME)
+	$(ENGINE) rmi $(IMAGE_NAME)
