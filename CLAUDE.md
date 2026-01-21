@@ -14,11 +14,8 @@ A fully-loaded development environment based on `node:24-bookworm` with multi-ar
 # Build with podman
 make build
 
-# Run interactive shell (mounts current dir to /app)
+# Attach to container (starts via docker compose if not running)
 ./cy
-
-# Run with port forwarding
-./cy -p 3000 -p 8080
 
 # Test all installed tools
 make test
@@ -43,6 +40,7 @@ reyolo 23 "Fix 10 errors"
 - Bash 5.3 (compiled from source)
 - Node.js 24 (LTS) + npm
 - Python 3 + pip + venv
+- PHP + common extensions
 - Go 1.25.6
 - Rust (stable via rustup)
 
@@ -67,6 +65,7 @@ reyolo 23 "Fix 10 errors"
 **Database Clients**
 - postgresql-client
 - redis-tools
+- sqlite3
 
 **Cloud & DevOps**
 - AWS CLI v2

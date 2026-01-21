@@ -1,0 +1,13 @@
+services:
+  claude:
+    image: claude-yolo:latest
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_RAW
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+    command: ["-c", "sleep infinity"]

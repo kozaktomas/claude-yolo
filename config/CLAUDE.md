@@ -22,7 +22,6 @@ The repository mounted at `/app` varies depending on what the user is working on
 
 ### Binary Debugging
 - **strace** - trace system calls
-- **ltrace** - trace library calls
 - **gdb** - GNU debugger
 - **binutils** - objdump, readelf, nm, strings
 
@@ -36,6 +35,7 @@ The repository mounted at `/app` varies depending on what the user is working on
 ### Database Clients
 - **psql** - PostgreSQL client
 - **redis-cli** - Redis client
+- **sqlite3** - SQLite client
 
 ### Cloud & DevOps
 - **aws** - AWS CLI v2

@@ -47,6 +47,7 @@ RUN apt-get update && apt-get install -y \
     # Database clients
     postgresql-client \
     redis-tools \
+    sqlite3 \
     # Build deps for bash
     gcc \
     libncurses-dev \
@@ -75,6 +76,19 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/* \
  && ln -s /usr/bin/python3 /usr/local/bin/python
+
+# ---- PHP ----
+RUN apt-get update && apt-get install -y \
+    php \
+    php-cli \
+    php-common \
+    php-curl \
+    php-json \
+    php-mbstring \
+    php-xml \
+    php-zip \
+    --no-install-recommends \
+ && rm -rf /var/lib/apt/lists/*
 
 # ---- Go ----
 ENV GO_VERSION=1.25.6

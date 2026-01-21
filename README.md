@@ -20,28 +20,46 @@ yolo
 ## Usage
 
 ```bash
-# Interactive shell
+# Attach to container (starts it if not running)
 ./cy
-
-# With port forwarding
-./cy -p 3000
-./cy -p 3000 -p 8080 -p 5432
 
 # Run tests to verify all tools
 make test
 ```
 
+## Docker Compose
+
+The `cy` script uses Docker Compose to manage the container:
+
+```yaml
+services:
+  claude:
+    image: claude-yolo:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+    command: ["-c", "sleep infinity"]
+```
+
+A `docker-compose.yml` is included in the repo. Just run `./cy` to start and attach to the container.
+
 ## What's Included
 
 | Category | Tools |
 |----------|-------|
-| **Languages** | Node.js 24, Python 3, Go 1.25.6, Rust |
+| **Languages** | Node.js 24, Python 3, PHP, Go 1.25.6, Rust |
 | **Shell** | Bash 5.3 |
 | **CLI** | jq, yq, ripgrep, fd, make, vim, git |
-| **Databases** | postgresql-client, redis-tools |
+| **Networking** | lsof, net-tools, iproute2, dnsutils, ping, traceroute, tcpdump |
+| **Debugging** | strace, gdb, binutils |
+| **Databases** | postgresql-client, redis-tools, sqlite3 |
 | **Cloud** | AWS CLI, gcloud, Azure CLI |
 | **DevOps** | Docker CLI, kubectl, Terraform |
-| **Browser** | Playwright + browsers |
+| **Browser** | Playwright + Chromium |
 | **MCP Servers** | Playwright (browser automation) |
 
 ## Requirements
